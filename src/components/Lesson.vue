@@ -1,7 +1,8 @@
 <template>
     <div class="lesson">
         <div class="disabled" :class="{ show: answer }">
-            <span  v-if="answer == 'incorrect'">{{ question.ru }} - <span class="he-answer">{{ question.he }}</span></span>
+            <span v-if="answer == 'incorrect'">{{ question.ru }} - <span
+                    :class="{ cursive: cursive }">{{ question.he }}</span></span>
         </div>
         <div class="container">
             <div class="row">
@@ -34,10 +35,18 @@
             <div class="row">
                 <div class="answer-col"
                      v-for="word of dictionary">
-                    <button type="button" class="btn" @click="checkAnswer(word)">{{ word.he }}</button>
+                    <button type="button"
+                            class="btn"
+                            @click="checkAnswer(word)"
+                            :class="{ cursive: cursive }">{{ word.he }}</button>
                 </div>
             </div>
         </div>
+        <footer class="footer">
+            <label>
+                <input type="checkbox" v-model="cursive"><span>רָהוּט</span>
+            </label>
+        </footer>
     </div>
 </template>
 
@@ -50,7 +59,8 @@
       return {
         dictionary: [],
         question: null,
-        answer: null
+        answer: null,
+        cursive: false
       }
     },
     created () {
@@ -63,6 +73,10 @@
         } else {
           this.answer = 'incorrect'
         }
+        var data = new URLSearchParams()
+        data.append('id', this.question.id)
+        data.append('answer', this.answer)
+        axios.post('http://10.0.3.173/lesson/answer', data)
       },
       loadDictionary () {
         axios.get('http://10.0.3.173/lesson/' + this.$route.params.id)
@@ -116,9 +130,9 @@
         padding-top: 20px;
     }
 
-    .he-answer {
-        /*font-family: Motek;*/
-        /*font-size: 35px;*/
+    .cursive {
+        font-family: Motek;
+        font-size: 40px;
     }
 
     .container {
@@ -154,6 +168,7 @@
         right: 0;
         margin: 0 auto;
         position: absolute;
+        top: 140px;
     }
 
     .correct, .incorrect {
@@ -189,6 +204,10 @@
         padding: 15px;
     }
 
+    .answer-col > .cursive {
+        font-size: 35px;
+    }
+
     .btn {
         height: 60px !important;
         background-repeat: repeat-x;
@@ -197,10 +216,9 @@
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
         background-image: linear-gradient(to bottom, #337ab7 0, #265a88 100%);
         display: block;
-        width: 100%;
-        padding: 10px 16px;
-        /*font-size: 34px;*/
         font-size: 25px;
+        width: 100%;
+        padding: 0 15px;
         line-height: 1.3333333;
         border-radius: 6px;
         color: #fff;
@@ -217,7 +235,6 @@
         -webkit-appearance: button;
         text-transform: none;
         overflow: visible;
-        /*font-family: Motek;*/
     }
 
     .btn:active {
@@ -241,5 +258,29 @@
         background-position: 0 -15px;
         border-color: #204d74;
         text-decoration: none;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background-color: #f5f5f5;
+        padding: 10px;
+        direction: rtl;
+    }
+
+    .footer label {
+        display: block;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    .footer input {
+        vertical-align: middle;
+    }
+
+    .footer label span {
+        vertical-align: middle;
     }
 </style>
