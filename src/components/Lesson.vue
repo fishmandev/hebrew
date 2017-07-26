@@ -93,7 +93,8 @@
   }
 </script>
 
-<style>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
     @font-face {
         font-family: Motek;
         src: url(./../assets/motek.ttf);
