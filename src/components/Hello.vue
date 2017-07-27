@@ -26,3 +26,12 @@
   }
 </script>
 
+<style scoped>
+    ul {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
