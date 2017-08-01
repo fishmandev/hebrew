@@ -43,9 +43,14 @@
             </div>
         </div>
         <footer class="footer">
-            <label>
-                <input type="checkbox" v-model="cursive"><span>רָהוּט</span>
-            </label>
+            <div>
+                <router-link to="/">Главная</router-link>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" v-model="cursive"><span>прописью</span>
+                </label>
+            </div>
         </footer>
     </div>
 </template>
@@ -287,6 +292,11 @@
         background-color: #f5f5f5;
         padding: 10px;
         direction: rtl;
+    }
+
+    .footer div {
+        float: right;
+        padding-left: 10px;
     }
 
     .footer label {
