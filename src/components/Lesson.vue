@@ -34,11 +34,11 @@
             </div>
             <div class="row">
                 <div class="answer-col"
-                     v-for="word of dictionary">
+                     v-for="word of dictionaryItems">
                     <button type="button"
                             class="btn"
                             @click="checkAnswer(word)"
-                            :class="{ cursive: cursive }">{{ word.heVowel }}</button>
+                            :class="{ cursive: cursive }">{{ word.text }}</button>
                 </div>
             </div>
         </div>
@@ -65,6 +65,18 @@
     },
     created () {
       this.loadDictionary()
+    },
+    computed: {
+      dictionaryItems () {
+        return this.dictionary.map((a) => {
+          if (this.cursive) {
+            a.text = a.he
+          } else {
+            a.text = a.heVowel
+          }
+          return a
+        })
+      }
     },
     methods: {
       checkAnswer (word) {
