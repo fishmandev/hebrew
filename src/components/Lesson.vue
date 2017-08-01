@@ -73,12 +73,12 @@
     },
     computed: {
       dictionaryItems () {
-        return this.dictionary.map((a) => {
-          a.text = a.heVowel
-          if (this.cursive || a.heVowel === '') {
-            a.text = a.he
+        return this.dictionary.map((item) => {
+          item.text = item.heVowel
+          if (this.cursive || item.heVowel === '') {
+            item.text = item.he
           }
-          return a
+          return item
         })
       }
     },
