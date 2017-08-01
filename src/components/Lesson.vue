@@ -94,7 +94,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
     @font-face {
         font-family: Motek;
         src: url(./../assets/motek.ttf);
@@ -105,7 +105,7 @@
     }
 
     body {
-        margin: 0px;
+        margin: 0;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
         line-height: 1.42857143;
