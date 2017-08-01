@@ -2,7 +2,7 @@
     <div class="lesson">
         <div class="disabled" :class="{ show: answer }">
             <span v-if="answer == 'incorrect'">{{ question.ru }} - <span
-                    :class="{ cursive: cursive }">{{ question.he }}</span></span>
+                    :class="{ cursive: cursive }">{{ question.text }}</span></span>
         </div>
         <div class="container">
             <div class="row">
@@ -248,6 +248,7 @@
         -webkit-appearance: button;
         text-transform: none;
         overflow: visible;
+        direction: rtl;
     }
 
     .btn:active {
