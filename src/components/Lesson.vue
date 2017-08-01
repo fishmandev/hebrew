@@ -38,7 +38,7 @@
                     <button type="button"
                             class="btn"
                             @click="checkAnswer(word)"
-                            :class="{ cursive: cursive }">{{ word.he }}</button>
+                            :class="{ cursive: cursive }">{{ word.heVowel }}</button>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
         axios.get('http://10.0.3.173/lesson/' + this.$route.params.id)
           .then(response => {
             this.dictionary = response.data.dictionary
-            this.question = response.data.dictionary[Math.floor(Math.random() * 6)]
+            this.question = response.data.dictionary[Math.floor(Math.random() * response.data.dictionary.length)]
           })
       },
       reset () {
@@ -217,7 +217,7 @@
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
         background-image: linear-gradient(to bottom, #337ab7 0, #265a88 100%);
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         width: 100%;
         padding: 0 15px;
         line-height: 1.3333333;
