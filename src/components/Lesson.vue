@@ -1,7 +1,7 @@
 <template>
     <div class="lesson">
         <div class="disabled" :class="{ show: answer }">
-            <span v-if="answer == 'incorrect'">{{ question.ru }} - <span
+            <span v-if="answer == 'incorrect'">{{ question.ru }} - <span class="rtl"
                     :class="{ cursive: cursive }">{{ question.text }}</span></span>
         </div>
         <div class="container">
@@ -141,6 +141,11 @@
         font-size: 25px;
         color: white;
         padding-top: 20px;
+    }
+
+    .rtl {
+        direction: rtl;
+        display: inline-block;
     }
 
     .cursive {
