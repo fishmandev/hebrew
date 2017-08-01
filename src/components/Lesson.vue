@@ -74,10 +74,9 @@
     computed: {
       dictionaryItems () {
         return this.dictionary.map((a) => {
-          if (this.cursive) {
+          a.text = a.heVowel
+          if (this.cursive || a.heVowel === '') {
             a.text = a.he
-          } else {
-            a.text = a.heVowel
           }
           return a
         })
