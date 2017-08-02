@@ -92,10 +92,10 @@
         var data = new URLSearchParams()
         data.append('id', this.question.id)
         data.append('answer', this.answer)
-        axios.post('http://10.0.3.173/lesson/answer', data)
+        axios.post(process.env.API_ENDPOINT + '/lesson/answer', data)
       },
       loadDictionary () {
-        axios.get('http://10.0.3.173/lesson/' + this.$route.params.id)
+        axios.get(process.env.API_ENDPOINT + '/lesson/' + this.$route.params.id)
           .then(response => {
             this.dictionary = response.data.dictionary
             this.question = response.data.dictionary[Math.floor(Math.random() * response.data.dictionary.length)]

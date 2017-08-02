@@ -18,7 +18,7 @@
       }
     },
     created () {
-      axios.get('http://10.0.3.173/lesson')
+      axios.get(process.env.API_ENDPOINT + '/lesson')
         .then(response => {
           this.items = response.data.lessons
         })
